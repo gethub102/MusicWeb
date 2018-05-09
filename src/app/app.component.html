@@ -1,26 +1,31 @@
-<app-header></app-header>
-<!--<div class="container">-->
-  <!--<app-cokpit-->
-    <!--(serverCreated)="onServerAdded($event)"-->
-    <!--(bpCreated)="onBlueprintAdded($event)"-->
-  <!--&gt;</app-cokpit>-->
-  <!--<hr>-->
-  <!--<div class="row">-->
-    <!--<div class="col-xs-12">-->
-      <!--<app-serve-element-->
-        <!--*ngFor="let serverElement of serverElements"-->
-        <!--[srvElement]="serverElement"></app-serve-element>-->
-    <!--</div>-->
-  <!--</div>-->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="nav nav-tabs">
+        <li
+          role="presentation"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="">Home</a>
+        </li>
+        <li role="presentation"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/servers">Servers</a>
+        </li>
+        <li role="presentation"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+          <a [routerLink]="['users']">Users</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <div class="row">
-    <div class="col-xs-offset-3 col-xs-6">
-      <input type="text" class="form-control" [(ngModel)]="testvar">
-      <!--<input type="text" class="form-control" [(ngModel)]="testvar">-->
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <router-outlet></router-outlet>
     </div>
+  </div>
 
-  </div>
-  <div>
-    <p (click)="clickEvent()">this a ngModel binding {{testvar}}</p>
-  </div>
-<!--</div>-->
+</div>

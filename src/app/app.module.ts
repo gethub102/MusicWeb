@@ -1,39 +1,38 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import {AppComponent} from './app.component';
-import {HeaderComponent} from './header/header.component';
-import {Routes, RouterModule} from '@angular/router';
-import {HomeComponent} from './home/home.component';
-import {SearchComponent} from './search/search.component';
-import {FavoriteComponent} from './favorite/favorite.component';
-import { CokpitComponent } from './cokpit/cokpit.component';
-import { ServeElementComponent } from './serve-element/serve-element.component';
-
- const routers: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: 'search', component: SearchComponent},
-  {path: 'favorite', component: FavoriteComponent},
- ];
+import { AppComponent } from './app.component';
+import { UsersComponent } from './users/users.component';
+import { UserComponent } from './users/user/user.component';
+import { ServersComponent } from './servers/servers.component';
+import { ServerComponent } from './servers/server/server.component';
+import { EditServerComponent } from './servers/edit-server/edit-server.component';
+import { HomeComponent } from './home/home.component';
+import { ServersService } from './servers/servers.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthService } from './auth.service';
+import { AuthGuardService } from './auth-guard.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    UsersComponent,
+    UserComponent,
+    ServersComponent,
+    ServerComponent,
+    EditServerComponent,
     HomeComponent,
-    SearchComponent,
-    FavoriteComponent,
-    CokpitComponent,
-    ServeElementComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routers)
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [ServersService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
