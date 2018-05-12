@@ -1,19 +1,13 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 
-import {AppComponent} from './app.component';
-import {HeaderComponent} from './header/header.component';
-import {Routes, RouterModule} from '@angular/router';
-import {HomeComponent} from './home/home.component';
-import {SearchComponent} from './search/search.component';
-import {FavoriteComponent} from './favorite/favorite.component';
-
- const routers: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: 'search', component: SearchComponent},
-  {path: 'favorite', component: FavoriteComponent},
- ];
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
+import { SearchComponent } from './search/search.component';
+import { FavoriteComponent } from './favorite/favorite.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -26,7 +20,7 @@ import {FavoriteComponent} from './favorite/favorite.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routers)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
