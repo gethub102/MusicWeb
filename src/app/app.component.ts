@@ -29,7 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       }
     );
-  };
+  }
 
   ngOnDestroy() {
     console.log('Destroying app component');
