@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UsersService } from './users.service';
-import { Subscription } from 'rxjs/Subscription';
-import { HttpClient } from '@angular/common/http';
-import { Data } from '@angular/router';
+
+import { ServerService } from './server.service';
+
 
 @Component({
   selector: 'app-root',
@@ -10,39 +9,74 @@ import { Data } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  user1Activated = false;
-  user2Activated = false;
-  activatedSubscribtion: Subscription;
-  url = 'https://jsonplaceholder.typicode.com/posts';
-  rets = [];
 
-  constructor(private usersService: UsersService, private http: HttpClient) {
+
+  servers = [
+    {
+      name: 'Testserver',
+      capacity: 10,
+      id: this.generateId()
+    },
+    {
+      name: 'Liveserver',
+      capacity: 100,
+      id: this.generateId()
+    }
+  ];
+
+  constructor(private serverService: ServerService) {
   }
 
   ngOnInit() {
-    this.activatedSubscribtion = this.usersService.userActivated.subscribe(
-      (id: number) => {
-        if (+id === 1) {
-          this.user1Activated = true;
-        } else if (+id === 2) {
-          this.user2Activated = true;
-        }
-      }
-    );
+
   }
 
   ngOnDestroy() {
-    console.log('Destroying app component');
-    this.activatedSubscribtion.unsubscribe();
+
   }
 
-  GETTest() {
-    const ret = this.http.get(this.url).subscribe(
-      (data: Data) => {
-        console.log(data);
-        this.rets.push(data);
-      }
-    );
-    return ret;
+  onAddServer(name: string) {
+    this.servers.push({
+      name: name,
+      capacity: 50,
+      id: this.generateId()
+    });
+  }
+
+  onSaveServer() {
+    this.serverService.storeMyServer(this.servers)
+      .subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error)
+      )
+    ;
+  }
+
+
+  onPutServer() {
+    this.serverService.storeMyServerPut(this.servers)
+      .subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error)
+      )
+    ;
+  }
+
+  onGetServer() {
+    this.serverService.getServers()
+      .subscribe(
+        (response) => {
+          const data = [];
+          for (const responseKey in response) {
+            data.push(response[responseKey]);
+          }
+          console.log(data);
+        },
+        (error) => console.log(error)
+      );
+  }
+
+  private generateId() {
+    return Math.round(Math.random() * 10000);
   }
 }
