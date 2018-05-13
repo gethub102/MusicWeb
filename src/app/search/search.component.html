@@ -1,3 +1,14 @@
-<p>
-  search works!
-</p>
+<div id="search-box" class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for..."
+             [(ngModel)]="words" required>
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button"
+                (click)="onSearchTerm()">Search on iTunes</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+
+<app-music-list [musicList]="musicList" *ngIf="musicList?.length > 0"></app-music-list>
