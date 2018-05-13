@@ -149,3 +149,6 @@ testem.log
 Thumbs.db
 
 package-lock.json
+
+# System Environment Files
+environment.var.service.ts
