@@ -11,14 +11,16 @@ export class AuthService {
   }
 
   logout() {
-    console.log(this.token);
-    firebase.auth().signOut().then(function () {
-      console.log('log out success');
-    }).catch(function (error) {
-      // An error happened.
-      console.log(error);
-    });
-    this.token = null;
+    setTimeout(() => {
+      console.log(this.token);
+      firebase.auth().signOut().then(function () {
+        console.log('log out success');
+      }).catch(function (error) {
+        // An error happened.
+        console.log(error);
+      });
+      this.token = null;
+    }, 1000);
     this.router.navigate(['']);
   }
 
