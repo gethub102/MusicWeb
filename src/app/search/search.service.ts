@@ -21,6 +21,14 @@ export class SearchService {
       );
   }
 
+  onSearchByTermForFavorite(term: string) {
+    const tmp = `${this.baseurl}search?term=${term}&media=music&limit=1`;
+    return this.http.get<Music[]>(tmp, {responseType: 'json'})
+      .pipe(
+        catchError(error => of(`Bad Promise: ${error}`))
+      );
+  }
+
   onSearchByCountry(term: string, country: string) {
     // https://itunes.apple.com/search?term=jim+jones&country=ca
     const ctry_url = `${this.baseurl}search?term=${term}&country=${country}&media=music&limit=20`;

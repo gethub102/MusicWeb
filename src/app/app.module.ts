@@ -17,6 +17,10 @@ import { SearchService } from './search/search.service';
 import { MusicListComponent } from './search/music-list/music-list.component';
 import { SearchUsPopComponent } from './search/search-us-pop/search-us-pop.component';
 import { SearchZhPopComponent } from './search/search-zh-pop/search-zh-pop.component';
+import { AuthGuardService } from './auth/auth-guard.service';
+import { MusicService } from './shared/music.service';
+import { HttpService } from './shared/http.service';
+import { EnvironmentVarService } from './environment.var.service';
 
 
 @NgModule({
@@ -38,7 +42,7 @@ import { SearchZhPopComponent } from './search/search-zh-pop/search-zh-pop.compo
     HttpClientModule,
     FormsModule
   ],
-  providers: [AuthService, SearchService],
+  providers: [AuthService, SearchService, AuthGuardService, MusicService, HttpService, EnvironmentVarService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

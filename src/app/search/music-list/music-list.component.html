@@ -8,6 +8,7 @@
     <th scope="col">Release</th>
     <th scope="col">Collection</th>
     <th scope="col">Sample</th>
+    <th scope="col">Add Favorite</th>
   </tr>
   </thead>
   <tbody *ngFor="let music of musicList; let i = index">
@@ -37,6 +38,8 @@
       : music.collectionCensoredName }}</a>
     </td>
     <td><a href="{{ music.previewUrl }}">link</a></td>
+
+    <td><span class="badge" (click)="onAddToFavorite(i)" >{{ music.addFavoriteStatus ? 'Added' : 'Add' }}</span></td>
   </tr>
   </tbody>
 </table>

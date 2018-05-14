@@ -11,4 +11,5 @@ export interface Music {
   trackId?: number;
   artworkUrl30?: string;
   country?: string;
+  addFavoriteStatus?: boolean;
 }

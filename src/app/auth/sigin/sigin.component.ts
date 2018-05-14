@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { AuthService } from '../auth.service';
+import { EnvironmentVarService } from '../../environment.var.service';
 
 @Component({
   selector: 'app-sigin',
@@ -10,7 +11,7 @@ import { AuthService } from '../auth.service';
 })
 export class SiginComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private env: EnvironmentVarService) { }
 
   ngOnInit() {
   }
@@ -18,7 +19,8 @@ export class SiginComponent implements OnInit {
   onSignin(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-    // this.authService.signinUser(email, password);
+    this.env.email = email;
+    this.authService.signinUser(email, password);
   }
 
 }
