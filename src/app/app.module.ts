@@ -21,6 +21,7 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { MusicService } from './shared/music.service';
 import { HttpService } from './shared/http.service';
 import { EnvironmentVarService } from './environment.var.service';
+import { FavoriteModule } from './favorite/favorite.module';
 
 
 @NgModule({
@@ -29,7 +30,6 @@ import { EnvironmentVarService } from './environment.var.service';
     HeaderComponent,
     HomeComponent,
     SearchComponent,
-    FavoriteComponent,
     PageNotFoundComponent,
     MusicListComponent,
     SearchUsPopComponent,
@@ -38,6 +38,7 @@ import { EnvironmentVarService } from './environment.var.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FavoriteModule,
     AuthModule,
     HttpClientModule,
     FormsModule

@@ -15,7 +15,7 @@ const appRoutes: Routes = [
   {path: 'zh-pop', component: SearchZhPopComponent, canActivate: [AuthGuardService] },
   // {path: 'zh-pop', component: SearchZhPopComponent },
   {path: 'search', component: SearchComponent},
-  {path: 'favorite', component: FavoriteComponent, canActivate: [AuthGuardService]},
+  // {path: 'favorite', component: FavoriteComponent, canActivate: [AuthGuardService]},
   // {path: 'favorite', component: FavoriteComponent },
   {path: 'page-not-found', component: PageNotFoundComponent},
 ];
