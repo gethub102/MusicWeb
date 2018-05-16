@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,50 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  filteredStatus: string;
+  @ViewChild('f') signupForm: NgForm;
+  defaultQuestion = 'pet';
+  answer = '';
+  genders = ['male', 'female'];
 
-  appStatus = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve('stable');
-    }, 2000);
-  });
-
-  servers = [
-    {
-      instanceType: 'medium',
-      name: 'Production Server',
-      status: 'stable',
-      started: new Date(15, 1, 2017)
-    },
-    {
-      instanceType: 'large',
-      name: 'User Database',
-      status: 'stable',
-      started: new Date(15, 1, 2017)
-    },
-    {
-      instanceType: 'small',
-      name: 'Development Server',
-      status: 'offline',
-      started: new Date(15, 1, 2017)
-    },
-    {
-      instanceType: 'small',
-      name: 'Testing Environment Server',
-      status: 'stable',
-      started: new Date(15, 1, 2017)
-    }
-  ];
+  suggestUserName() {
+    const suggestedName = 'Superuser';
+  }
 
   ngOnInit() {
 
   }
 
-  getStatusClasses(server: { instanceType: string, name: string, status: string, started: Date }) {
-    return {
-      'list-group-item-success': server.status === 'stable',
-      'list-group-item-warning': server.status === 'offline',
-      'list-group-item-danger': server.status === 'critical'
-    };
+  // onSubmit(form: NgForm) {
+  //   console.log('submitting ...');
+  //   console.log(form);
+  // }
+
+  onSubmit() {
+    console.log(this.signupForm);
   }
 }

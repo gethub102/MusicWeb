@@ -148,4 +148,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# System Env Files
+environment.var.service.ts
+
 package-lock.json
