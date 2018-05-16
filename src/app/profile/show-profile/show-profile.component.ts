@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { Profile } from '../../shared/Profile';
 import { HttpService } from '../../shared/http.service';
+import { Profile } from '../../shared/Profile';
 
 
-function emailMatcher(c: AbstractControl): {[key: string]: boolean} | null {
+function emailMatcher(c: AbstractControl): { [key: string]: boolean } | null {
   const emailControl = c.get('email');
   const confirmControl = c.get('confirmEmail');
   if (emailControl.pristine || confirmControl.pristine) {
@@ -13,24 +13,24 @@ function emailMatcher(c: AbstractControl): {[key: string]: boolean} | null {
   if (emailControl.value === confirmControl.value) {
     return null;
   }
-  return { 'match': true };
+  return {'match': true};
 }
 
 function ratingRange(min: number, max: number): ValidatorFn {
-  return  (c: AbstractControl): {[key: string]: boolean} | null => {
+  return (c: AbstractControl): { [key: string]: boolean } | null => {
     if (c.value !== undefined && (isNaN(c.value) || c.value < min || c.value > max)) {
-      return { 'range': true };
+      return {'range': true};
     }
     return null;
   };
 }
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-show-profile',
+  templateUrl: './show-profile.component.html',
+  styleUrls: ['./show-profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ShowProfileComponent implements OnInit {
 
   profileForm: FormGroup;
   profile: Profile = new Profile();
@@ -42,7 +42,8 @@ export class ProfileComponent implements OnInit {
   };
 
 
-  constructor(private fb: FormBuilder, private httpService: HttpService) { }
+  constructor(private fb: FormBuilder, private httpService: HttpService) {
+  }
 
   ngOnInit(): void {
     this.profileForm = this.fb.group({
@@ -56,14 +57,13 @@ export class ProfileComponent implements OnInit {
       notification: 'email',
       rating: ['', ratingRange(1, 5)],
       sendCatalog: true,
-      addresses: this.fb.array([ this.buildAddress() ])
+      addresses: this.fb.array([this.buildAddress()])
     });
 
     this.profileForm.get('notification').valueChanges
       .subscribe(value => this.setNotification(value));
 
-    console.log(this.profileForm);
-
+    this.fetchProfileValues();
   }
 
   get addresses(): FormArray {
@@ -93,6 +93,7 @@ export class ProfileComponent implements OnInit {
       alert('Minimum One address required');
     }
   }
+
   populateTestData(): void {
     this.profileForm.patchValue({
       firstName: 'Jack',
@@ -105,6 +106,25 @@ export class ProfileComponent implements OnInit {
     console.log(this.profileForm);
     console.log('Saved: ' + JSON.stringify(this.profileForm.value));
     this.httpService.updateProfile(this.profileForm.value).subscribe();
+  }
+
+  fetchProfileValues() {
+    this.httpService.fetchProfile().subscribe(
+      (resp_profile) => {
+        console.log(resp_profile);
+        const resp_email = resp_profile['emailGroup']['email'];
+        console.log('resp_emial = ' + resp_email);
+        this.profileForm.patchValue({
+          firstName: resp_profile['firstName'],
+          lastName: resp_profile['lastName'],
+          emailGroup: {email: resp_email, confirmEmail: resp_email},
+          phone: resp_profile['phone'],
+          addresses: resp_profile['addresses'],
+          rating: resp_profile['rating'],
+          sendCatalog: false
+        });
+      }
+    );
   }
 
   setNotification(notifyVia: string): void {

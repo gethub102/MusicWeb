@@ -159,16 +159,16 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <div class="col-md-offset-1 col-md-8 checkbox">
-            <label>
-              <input id="sendCatalogId"
-                     type="checkbox"
-                     formControlName="sendCatalog">
-              Send me your catalog
-            </label>
-          </div>
-        </div>
+        <!--<div class="form-group">-->
+          <!--<div class="col-md-offset-1 col-md-8 checkbox">-->
+            <!--<label>-->
+              <!--<input id="sendCatalogId"-->
+                     <!--type="checkbox"-->
+                     <!--formControlName="sendCatalog">-->
+              <!--Send me your catalog-->
+            <!--</label>-->
+          <!--</div>-->
+        <!--</div>-->
 
         <div *ngIf="profileForm.get('sendCatalog').value">
           <div class="form-group">
@@ -271,7 +271,7 @@
                             <button class="btn btn-primary"
                                     type="submit"
                                     [disabled]="!profileForm.valid">
-                                Save
+                                Update
                             </button>
                         </span>
             <span>
