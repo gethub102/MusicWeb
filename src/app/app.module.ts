@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
-import { FavoriteComponent } from './favorite/favorite.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
@@ -22,6 +21,7 @@ import { MusicService } from './shared/music.service';
 import { HttpService } from './shared/http.service';
 import { EnvironmentVarService } from './environment.var.service';
 import { FavoriteModule } from './favorite/favorite.module';
+import { ProfileModule } from './profile/profile.module';
 
 
 @NgModule({
@@ -39,6 +39,7 @@ import { FavoriteModule } from './favorite/favorite.module';
     BrowserModule,
     AppRoutingModule,
     FavoriteModule,
+    ProfileModule,
     AuthModule,
     HttpClientModule,
     FormsModule

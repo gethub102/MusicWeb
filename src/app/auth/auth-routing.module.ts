@@ -6,7 +6,7 @@ import { SigupComponent } from './sigup/sigup.component';
 const authRoutes: Routes = [
   {path: 'sigin', component: SiginComponent},
   {path: 'sigup', component: SigupComponent},
-  {path: '**', redirectTo: '/page-not-found'}
+  // {path: '**', redirectTo: '/page-not-found'}
 ];
 
 

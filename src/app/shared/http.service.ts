@@ -12,17 +12,15 @@ export class HttpService {
 
   storeMyFavoriteMusic(music: any) {
     const token = this.authService.getToken();
-    // const musicObj = {id: music};
     const databaseName = this.environmentVar.email.replace(/\./g, '-');
-    // const databaseName = this.environmentVar.email.replace(/\./g, '-');
-    return this.http.post(this.environmentVar.url + databaseName + '.json', music,
+    return this.http.post(this.environmentVar.url + databaseName + '\\favorite' + '.json', music,
       {params: new HttpParams().set('auth', token)});
   }
 
   storeMyFavoriteMusicPut(music: any) {
     const token = this.authService.getToken();
     const databaseName = this.environmentVar.email.replace(/\./g, '-');
-    return this.http.put(this.environmentVar.url + databaseName + '.json', music,
+    return this.http.put(this.environmentVar.url + databaseName + '\\favorite' + '.json', music,
       {params: new HttpParams().set('auth', token)});
   }
 
@@ -30,7 +28,7 @@ export class HttpService {
   getFavoriteMusics() {
     const databaseName = this.environmentVar.email.replace(/\./g, '-');
     const token = this.authService.getToken();
-    return this.http.get<any[]>(this.environmentVar.url + databaseName + '.json',
+    return this.http.get<any[]>(this.environmentVar.url + databaseName + '\\favorite' + '.json',
       {
         observe: 'body',
         params: new HttpParams().set('auth', token)
