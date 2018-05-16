@@ -5,6 +5,7 @@ import { FavoriteComponent } from './favorite.component';
 import { AuthGuardService } from '../auth/auth-guard.service';
 
 const favoriteRoutes: Routes = [
+  // {path: 'favorite', loadChildren: 'app/favorite/favorite.module#FavoriteModule', canActivate: [AuthGuardService]}
   {path: 'favorite', component: FavoriteComponent, canActivate: [AuthGuardService]}
 ];
 
