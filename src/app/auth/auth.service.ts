@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import * as firebase from 'firebase';
+import { EnvironmentVarService } from '../environment.var.service';
 
 @Injectable()
 export class AuthService {
   token;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private env: EnvironmentVarService) {
   }
 
   logout() {
@@ -39,7 +40,7 @@ export class AuthService {
             .then(
               (token: string) => this.token = token
             ).then(() => {
-              this.router.navigate(['/']);
+              this.router.navigate([this.env.prevUrl]);
           });
         }
       ).catch((error) => console.log(error));
