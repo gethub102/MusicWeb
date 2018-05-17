@@ -55,8 +55,6 @@ target/
 nbproject/private/
 build/
 nbbuild/
-dist/
-nbdist/
 .nb-gradle/
 
 
@@ -86,7 +84,6 @@ nbdist/
 nbproject/private/
 build/
 nbbuild/
-dist/
 nbdist/
 .nb-gradle/
 /.metadata/
