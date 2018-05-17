@@ -7,12 +7,12 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    FavoriteComponent
+    FavoriteComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
-    FavoriteRoutingModule
+    FavoriteRoutingModule,
   ]
 })
 export class FavoriteModule {

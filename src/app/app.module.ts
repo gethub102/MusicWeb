@@ -22,6 +22,7 @@ import { HttpService } from './shared/http.service';
 import { EnvironmentVarService } from './environment.var.service';
 import { FavoriteModule } from './favorite/favorite.module';
 import { ProfileModule } from './profile/profile.module';
+import { MouseActionDirective } from './shared/mouse-action.directive';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { ProfileModule } from './profile/profile.module';
     MusicListComponent,
     SearchUsPopComponent,
     SearchZhPopComponent,
+    MouseActionDirective
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,7 @@ import { ProfileModule } from './profile/profile.module';
     ProfileModule,
     AuthModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [AuthService, SearchService, AuthGuardService, MusicService, HttpService, EnvironmentVarService],
   bootstrap: [AppComponent]
