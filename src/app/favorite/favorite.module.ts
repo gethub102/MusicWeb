@@ -15,7 +15,8 @@ import {SharedModule} from '../shared/shared.module';
     FormsModule,
     FavoriteRoutingModule,
     SharedModule
-  ]
+  ],
+  exports: [FavoriteComponent]
 })
 export class FavoriteModule {
 
