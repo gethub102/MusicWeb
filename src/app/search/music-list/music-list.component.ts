@@ -11,6 +11,8 @@ import { HttpService } from '../../shared/http.service';
 export class MusicListComponent implements OnInit {
   addFavoriteStatus = 'Add';
 
+  myColor = 'lightgrey';
+
   @Input() musicList: any[];
 
   constructor(private favoriteService: HttpService) {

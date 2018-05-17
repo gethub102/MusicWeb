@@ -6,7 +6,9 @@ import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/cor
 export class MouseActionDirective implements OnInit {
 
   @Input('appMouseActionColor') appMouseActionColor: string;
+  @Input('appMouseAction') appMouseAction: string;
   @Input() defaultValue = 'red';
+
 
   constructor(private elRef: ElementRef) {
   }
@@ -15,7 +17,7 @@ export class MouseActionDirective implements OnInit {
   }
 
   @HostListener('mouseover') onMouseOver() {
-    this.changeBackGroundColor(this.appMouseActionColor || this.defaultValue);
+    this.changeBackGroundColor(this.appMouseAction || this.defaultValue);
   }
 
   @HostListener('mouseleave') onMouseLeave() {
