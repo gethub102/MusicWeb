@@ -1,8 +1,8 @@
-import { ActivatedRoute, ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { Injectable } from '@angular/core';
-import { AuthService } from './auth.service';
-import { EnvironmentVarService } from '../environment.var.service';
+import {ActivatedRoute, ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
+import {Injectable} from '@angular/core';
+import {AuthService} from './auth.service';
+import {EnvironmentVarService} from '../environment.var.service';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
@@ -20,7 +20,8 @@ export class AuthGuardService implements CanActivate {
     } else {
       this.env.prevUrl = state.url;
       console.log('prev url = ' + this.env.prevUrl);
-      setTimeout(() => this.router.navigate(['sigin']), 200);
+      this.router.navigate(['sigin']);
+      // setTimeout(() => this.router.navigate(['sigin']), 0);
       return false;
     }
   }

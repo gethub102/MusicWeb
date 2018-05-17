@@ -30,7 +30,6 @@ export class SearchService {
   }
 
   onSearchByCountry(term: string, country: string) {
-    // https://itunes.apple.com/search?term=jim+jones&country=ca
     const ctry_url = `${this.baseurl}search?term=${term}&country=${country}&media=music&limit=20`;
     return this.http.get<Music[]>(ctry_url, {responseType: 'json'})
       .pipe(

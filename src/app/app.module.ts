@@ -19,6 +19,7 @@ import {EnvironmentVarService} from './environment.var.service';
 import {FavoriteModule} from './favorite/favorite.module';
 import {ProfileModule} from './profile/profile.module';
 import {SearchModule} from './search/search.module';
+import {SharedModule} from './shared/shared.module';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import {SearchModule} from './search/search.module';
     AuthModule,
     HttpClientModule,
     FormsModule,
-    SearchModule
+    SearchModule,
   ],
   providers: [AuthService, SearchService, AuthGuardService, MusicService, HttpService, EnvironmentVarService],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import * as firebase from 'firebase';
+import {EnvironmentVarService} from './environment.var.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,12 @@ import * as firebase from 'firebase';
 })
 export class AppComponent implements OnInit {
 
+  constructor(private env: EnvironmentVarService) {}
+
   ngOnInit() {
     firebase.initializeApp({
-      apiKey: 'AIzaSyDTt5ZWQVd9cnG0nhBtWFq06DuwDcx-tW4',
-      authDomain: 'http-test-217e3.firebaseapp.com'
+      apiKey: this.env.apiKey,
+      authDomain: this.env.authDomain
     });
   }
 }
