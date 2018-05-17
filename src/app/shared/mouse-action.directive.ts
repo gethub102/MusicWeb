@@ -5,7 +5,7 @@ import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/cor
 })
 export class MouseActionDirective implements OnInit {
 
-  @Input('appMouseActionColor') appMouseActionColor: string;
+  // @Input('appMouseActionColor') appMouseActionColor: string;
   @Input('appMouseAction') appMouseAction: string;
   @Input() defaultValue = 'red';
 

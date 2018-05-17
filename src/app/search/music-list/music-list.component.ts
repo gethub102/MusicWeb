@@ -1,12 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
-import { HttpService } from '../../shared/http.service';
+import {HttpService} from '../../shared/http.service';
 
 
 @Component({
   selector: 'app-music-list',
   templateUrl: './music-list.component.html',
-  styleUrls: ['./music-list.component.css']
+  styleUrls: ['./music-list.component.css'],
 })
 export class MusicListComponent implements OnInit {
   addFavoriteStatus = 'Add';

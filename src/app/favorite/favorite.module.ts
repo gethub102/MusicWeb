@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { FavoriteComponent } from './favorite.component';
 import { FormsModule } from '@angular/forms';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     FavoriteRoutingModule,
+    SharedModule
   ]
 })
 export class FavoriteModule {

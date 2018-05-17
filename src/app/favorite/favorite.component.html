@@ -16,7 +16,7 @@
     <th scope="col">Add Favorite</th>
   </tr>
   </thead>
-  <tbody appMouseAction appMouseActionColor="lightgrey" *ngFor="let music of favMusicList; let i = index" >
+  <tbody [appMouseAction]="myColor" *ngFor="let music of favMusicList; let i = index" >
   <tr>
     <td>{{ i+1 }}</td>
     <td><a

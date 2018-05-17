@@ -12,6 +12,7 @@ export class FavoriteComponent implements OnInit, OnDestroy {
 
   favMusicListId = [];
   favMusicList = [];
+  myColor = 'lightgrey';
 
   constructor(private httpService: HttpService, private searchService: SearchService) {
   }

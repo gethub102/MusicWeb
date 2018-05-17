@@ -35,7 +35,7 @@ import { MouseActionDirective } from './shared/mouse-action.directive';
     MusicListComponent,
     SearchUsPopComponent,
     SearchZhPopComponent,
-    MouseActionDirective
+    // MouseActionDirective
   ],
   imports: [
     BrowserModule,
